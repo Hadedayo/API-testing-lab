@@ -19,8 +19,8 @@ class Postcodesio
     @single
   end
 
-  def get_multiple_postcodes(postcodes_array)
-    @multiple = JSON.parse(self.class.post('/postcodes', body: { "postcodes" => postcodes_array}).body)
+  def get_multiple_postcodes
+    @multiple
   end
 
   def get_status_from_postcode
@@ -32,8 +32,24 @@ class Postcodesio
    m.gsub(' ','')
   end
 
+  def single_postcode_quality
+    @single['result']['quality']
+  end
+
+  def single_postcode_eastings
+    @single['result']['eastings']
+  end
+
+  def single_postcode_northings
+    @single['result']['northings']
+  end
+
+  def four_uk_countries
+    @single['result']['country']
+  end
+
 end
 
 test = Postcodesio.new
 # puts test.single
-puts test.single_length_of_postcode
+puts test.four_uk_countries
