@@ -16,6 +16,3 @@ class Postcodes
     @single['status']
   end
 end
-
-# test = Postcodes.new
-# puts test.random_postcode
