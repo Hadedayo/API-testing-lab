@@ -12,7 +12,4 @@ class Postcodes
     @postcode = JSON.parse(self.class.get("/random/postcodes").body)
   end
 
-  def get_status_from_postcode
-    @single['status']
-  end
 end
