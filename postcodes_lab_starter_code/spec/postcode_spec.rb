@@ -7,7 +7,6 @@ describe Postcodesio do
     before(:all) do
       @postcodesio = Postcodesio.new
       @response = @postcodesio.get_single_postcode
-
     end
 
     it "should respond with a status message of 200" do
@@ -79,9 +78,26 @@ describe Postcodesio do
       expect(@postcodesio.single_msoa).to be_kind_of String
     end
 
+    it "should return a admin_district string" do
+      expect(@postcodesio.single_admin_district).to be_kind_of String
+    end
 
+    it "should return a incode string of three characters" do
+      expect(@postcodesio.single_incode).to be_kind_of String
+      expect(@postcodesio.single_incode.length).to eq 3
+    end
 
+    it "should return a incode string of 3-4 characters" do
+      expect(@postcodesio.single_incode.length).to be_between(3,4).inclusive
+    end
 
+    it "should return an admin_ward string" do
+      expect(@postcodesio.single_admin_ward).to be_kind_of String
+    end
+
+    it "should return an admin_county string" do
+      expect(@postcodesio.single_admin_county).to be_kind_of String
+    end
 
   end
 end
