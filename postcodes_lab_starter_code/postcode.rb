@@ -7,20 +7,15 @@ class Postcodesio
 
   base_uri 'https://api.postcodes.io'
 
-  attr_accessor :single, :multiple
+  attr_accessor :single, :random
 
   def initialize
-    @randomP = Postcodes.new
-    @single = @randomP.random_postcode
-    @multiple
+    @random = Postcodes.new
+    @single = @random.random_postcode
   end
 
   def get_single_postcode
     @single
-  end
-
-  def get_multiple_postcodes
-    @multiple
   end
 
   def get_status_from_postcode
@@ -88,10 +83,20 @@ class Postcodesio
     @single['result']['msoa']
   end
 
+  def single_admin_district
+    @single['result']['admin_district']
+  end
 
+  def single_incode
+    @single['result']['incode']
+  end
+
+  def single_admin_ward
+    @single['result']['codes']['admin_ward']
+  end
+
+  def single_admin_county
+    @single['result']['codes']['admin_county']
+  end
 
 end
-
-test = Postcodesio.new
-# puts test.single
-puts test.single_longitude_value
